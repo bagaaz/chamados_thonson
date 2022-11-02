@@ -1,0 +1,39 @@
+.header_menu {
+    border-bottom: 1px solid #dadada;
+}
+.header_menu__list {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+
+}
+.header_menu__list-item {
+    margin-right: 1rem;
+}
+.header_menu__list-item-input {
+    /* margin-top: 1.5vh; */
+    position: relative;
+}
+.header_menu__list-item-input > input {
+    height: 5vh;
+    background-color: #f1f1f1;
+    width: 100%;
+    border: 1px solid #dadada;
+    border-radius: 1rem;
+    padding: 0 1rem 0 1rem;
+}
+.header_menu__list-item-input > button {
+    background-color: #00000000;
+    border: none;
+    height: 5vh;
+    position: absolute;
+    right: 5px;
+    border-radius: 1rem;
+    color: #484848;
+}
+.header_menu__list-item-link {
+    color: #484848;
+}

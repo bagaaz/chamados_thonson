@@ -1,0 +1,36 @@
+.sidebar {
+    padding: 0 1rem;
+}
+.sidebar_title {
+    display: table;
+    width: 100%;
+    color: #dadada;
+    border-bottom: 1px solid #dadada;
+    height: 12vh;
+    margin-bottom: 2rem;
+}
+.sidebar_title > h1 {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.sidebar_menus {
+    height: 88vh;
+    width: 100%;
+}
+.sidebar_submenu__titulo {
+    display: flex;
+    justify-content: space-between;
+    color: #dadada;
+    font-size: 1rem;
+    border-bottom: 1px solid #dadada;
+}
+.sidebar_submenu__lista {
+    list-style: none;
+}
+.sidebar_submenu__lista-item {
+    color: #b2b7bb;
+}
+.sidebar_submenu__lista-item:hover {
+    color: #e1e8ec;
+}
