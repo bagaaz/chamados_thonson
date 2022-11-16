@@ -1,6 +1,10 @@
 /*
     Layout Geral
 */
+html {
+    max-width: 100vh !important;
+    overflow: hidden;
+}
 * {
     box-sizing: border-box;
 }
@@ -17,6 +21,7 @@ body {
     position: absolute;
     top:0;
     right: 0;
+    transition: 1s;
 }
 .sidebar {
     background-color: #1c4e80;
@@ -32,8 +37,10 @@ body {
     height: 88vh;
     width: 80vw;
     position: absolute;
-    top:5vh;
+    top:7vh;
     right: 0;
+    padding: 2rem;
+    transition: 1s;
 }
 .footer {
     height: 5vh;
@@ -42,6 +49,7 @@ body {
     bottom:0;
     right: 0;
     border-top: 1px solid #dadada;
+    transition: 1s;
 }
 
 /*

@@ -21,6 +21,7 @@
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/application.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/content.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -44,7 +45,7 @@
                     </a>
                 </li>
                 <li class="header_menu__list-item">
-                    <a href="#" class="header_menu__list-item-link">
+                    <a href="/logout" class="header_menu__list-item-link">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </a>
                 </li>
@@ -52,67 +53,60 @@
         </nav>
     </header>
     <nav class="sidebar">
-        <div class="sidebar_title">
-            <h1>Chamados</h1>
+        <div class="sidebar_header">
+            <h1 class="sidebar_titulo">Chamados</h1>
+            <i id="hamburguer-menu" class="fa-sharp fa-solid fa-bars" onclick="hiddeSidebar()"></i>
         </div>
-        <div class="sidebar_menus__submenu">
-            <h4 class="sidebar_submenu__titulo">
-                Dashboard
-                <i class="fa-solid fa-caret-down" data-submenu-drop></i>
-                <i class="fa-solid fa-caret-right" style="display: none;" data-submenu-drop></i>
-            </h4>
-            <ul class="sidebar_submenu__lista">
-                <li class="sidebar_submenu__lista-item">Dashboard</li>
-
-            </ul>
-        </div>
-        <div class="sidebar_menus">
-            <div class="sidebar_menus__submenu">
-                <h4 class="sidebar_submenu__titulo">
-                    Chamados
-                    <i class="fa-solid fa-caret-down" data-submenu-drop></i>
-                    <i class="fa-solid fa-caret-right" style="display: none;" data-submenu-drop></i>
-                </h4>
-                <ul class="sidebar_submenu__lista">
-                    <li class="sidebar_submenu__lista-item">Registrar chamado</li>
-                    <li class="sidebar_submenu__lista-item">Meus chamados</li>
-                </ul>
-            </div>
-            <div class="sidebar_menus__submenu">
-                <h4 class="sidebar_submenu__titulo">
-                    Suporte
-                    <i class="fa-solid fa-caret-down" data-submenu-drop></i>
-                    <i class="fa-solid fa-caret-right" style="display: none;" data-submenu-drop></i>
-                </h4>
-                <ul class="sidebar_submenu__lista">
-                    <li class="sidebar_submenu__lista-item">Chamados em aberto</li>
-                    <li class="sidebar_submenu__lista-item">Todos os chamados</li>
-                    <li class="sidebar_submenu__lista-item">Chamados em espera</li>
-
-                </ul>
-            </div>
-            <div class="sidebar_menus__submenu">
-                <h4 class="sidebar_submenu__titulo">
-                    Admin
-                    <i class="fa-solid fa-caret-down" data-submenu-drop></i>
-                    <i class="fa-solid fa-caret-right" style="display: none;" data-submenu-drop></i>
-                </h4>
-                <ul class="sidebar_submenu__lista">
-                    <li class="sidebar_submenu__lista-item">Cadastrar usuario</li>
-                    <li class="sidebar_submenu__lista-item">Remover usuario</li>
-                    <li class="sidebar_submenu__lista-item">Todos os usuarios</li>
-
-                </ul>
-            </div>
+        <div class="sidebar_menus" id="sidebar_menus">
+            <a href="{{ route('dashboard') }}" class="sidebar_menus__submenu">
+                <i class="fa-solid fa-gauge sidebar_submenu__icone"></i>
+                <h4 class="sidebar_submenu__titulo">Dashboard</h4>
+            </a>
+            <a href="{{ route('chamado.index') }}" class="sidebar_menus__submenu">
+                <i class="fa-solid fa-ticket sidebar_submenu__icone"></i>
+                <h4 class="sidebar_submenu__titulo">Chamados</h4>
+            </a>
+            <a href="{{ route('chamado.index') }}" class="sidebar_menus__submenu">
+                <i class="fa-solid fa-headset sidebar_submenu__icone"></i>
+                <h4 class="sidebar_submenu__titulo">Suporte</h4>
+            </a>
+            <a href="{{ route('usuario.index') }}" class="sidebar_menus__submenu">
+                <i class="fa-solid fa-users sidebar_submenu__icone"></i>
+                <h4 class="sidebar_submenu__titulo">Usuário</h4>
+            </a>
         </div>
     </nav>
     <main class="application">
-        @yield('content')
+        <div class="application_box">
+            @yield('content')
+        </div>
     </main>
     <footer class="footer">
         <div class="footer_copy">Gabriel Oliveira</div>
     </footer>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/mychart.js') }}"></script>
+    <script>
+        let sidebarStatus = sessionStorage.getItem('sidebar');
+        let sidebar = document.querySelector('.sidebar');
+        let header = document.querySelector('.header');
+        let application = document.querySelector('.application');
+        let footer = document.querySelector('.footer');
+        let sidebarMenus = document.querySelector('#sidebar_menus');
+
+        sidebar.style.transition = '0s';
+        header.style.transition = '0s';
+        application.style.transition = '0s';
+        footer.style.transition = '0s';
+        sidebarMenus.style.transition = '0s';
+
+        if (sidebarStatus === 'hidden') {
+            sidebar.classList.add('sidebar-hidden');
+            header.style.width = "97vw";
+            application.style.width = "97vw";
+            footer.style.width = "97vw";
+        }
+    </script>
 </body>
 </html>

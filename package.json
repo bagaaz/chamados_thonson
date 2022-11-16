@@ -10,5 +10,9 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "vite": "^3.0.0"
+    },
+    "dependencies": {
+        "chart.js": "^3.9.1",
+        "laravel-mix": "^6.0.49"
     }
 }

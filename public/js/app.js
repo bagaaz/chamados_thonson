@@ -19,67 +19,33 @@ function togglePasswordView() {
     })
 }
 
-let buttonHiddenSubmenu = document.querySelectorAll('[data-submenu-drop]');
-const listatMenu = document.querySelectorAll('.sidebar_submenu__lista');
+function hiddeSidebar() {
+    let sidebar = document.querySelector('.sidebar');
+    let header = document.querySelector('.header');
+    let application = document.querySelector('.application');
+    let footer = document.querySelector('.footer');
+    let sidebarMenus = document.querySelector('#sidebar_menus');
 
-buttonHiddenSubmenu.forEach((element, index) => {
-    element.addEventListener('click', () => {
-        if(element.classList[1] === 'fa-caret-down' && element.style.display == "") {
-            element.style.display = "none";
-            buttonHiddenSubmenu[index + 1].style.display = "";
+    sidebar.style.transition = '1s';
+    header.style.transition = '1s';
+    application.style.transition = '1s';
+    footer.style.transition = '1s';
+    sidebarMenus.style.transition = '1s';
 
-            switch(index) {
-                case 0:
-                case 1:
-                    listatMenu[0].style.display = "none";
-                    break;
 
-                case 2:
-                case 3:
-                    listatMenu[1].style.display = "none";
-                    break;
+    if (sidebar.classList[1] == 'sidebar-hidden') {
 
-                case 4:
-                case 5:
-                    listatMenu[2].style.display = "none";
-                    break;
+        sidebar.classList.remove('sidebar-hidden');
+        header.style.width = "80vw";
+        application.style.width = "80vw";
+        footer.style.width = "80vw";
+        sessionStorage.setItem('sidebar', 'show');
+    } else {
 
-                case 6:
-                case 7:
-                    listatMenu[3].style.display = "none";
-                    break;
-
-                default:
-                    break;
-            }
-        } else {
-            element.style.display = "none";
-            buttonHiddenSubmenu[index - 1].style.display = "";
-
-            switch(index) {
-                case 0:
-                case 1:
-                    listatMenu[0].style.display = "";
-                    break;
-
-                case 2:
-                case 3:
-                    listatMenu[1].style.display = "";
-                    break;
-
-                case 4:
-                case 5:
-                    listatMenu[2].style.display = "";
-                    break;
-
-                case 6:
-                case 7:
-                    listatMenu[3].style.display = "";
-                    break;
-
-                default:
-                    break;
-            }
-        }
-    })
-});
+        sidebar.classList.add('sidebar-hidden');
+        header.style.width = "97vw";
+        application.style.width = "97vw";
+        footer.style.width = "97vw";
+        sessionStorage.setItem('sidebar', 'hidden');
+    }
+}
