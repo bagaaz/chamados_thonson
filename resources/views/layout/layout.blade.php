@@ -54,7 +54,7 @@
     </header>
     <nav class="sidebar">
         <div class="sidebar_header">
-            <h1 class="sidebar_titulo">Chamados</h1>
+            <img class="sidebar_logo" src="img/logo_branca.png" alt="Logo sistema de chamados">
             <i id="hamburguer-menu" class="fa-sharp fa-solid fa-bars" onclick="hiddeSidebar()"></i>
         </div>
         <div class="sidebar_menus" id="sidebar_menus">

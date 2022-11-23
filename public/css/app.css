@@ -4,6 +4,16 @@
 html {
     max-width: 100vh !important;
     overflow: hidden;
+
+    --dark-blue: #011936;
+    --light-blue: #1e96fc;
+    --white: #ffffff;
+    --soft-white: #f8f7ff;
+    --light-grey: #746d75;
+    --medium-grey: #4d5061;
+    --dark-grey: #30323d;
+    --red: #b80c09;
+    --border-color: #dadada;
 }
 * {
     box-sizing: border-box;
@@ -24,7 +34,7 @@ body {
     transition: 1s;
 }
 .sidebar {
-    background-color: #1c4e80;
+    background-color: var(--dark-blue);
     height: 100vh;
     width: 20vw;
     position: absolute;
@@ -48,7 +58,7 @@ body {
     position: absolute;
     bottom:0;
     right: 0;
-    border-top: 1px solid #dadada;
+    border-top: 1px solid var(--border-color);
     transition: 1s;
 }
 
