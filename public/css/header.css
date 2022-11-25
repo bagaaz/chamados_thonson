@@ -1,5 +1,5 @@
 .header_menu {
-    border-bottom: 1px solid #dadada;
+    border-bottom: 1px solid var(--border-color);
     height: 100%;
 }
 .header_menu__list {
@@ -19,21 +19,21 @@
 }
 .header_menu__list-item-input > input {
     height: 5vh;
-    background-color: #f1f1f1;
+    background-color: var(--soft-white);
     width: 100%;
-    border: 1px solid #dadada;
+    border: 1px solid var(--border-color);
     border-radius: 1rem;
     padding: 0 1rem 0 1rem;
 }
 .header_menu__list-item-input > button {
-    background-color: #00000000;
+    background-color: var(--transparent);
     border: none;
     height: 5vh;
     position: absolute;
     right: 5px;
     border-radius: 1rem;
-    color: #484848;
+    color: var(--medium-grey);
 }
 .header_menu__list-item-link {
-    color: #484848;
+    color: var(--medium-grey);
 }

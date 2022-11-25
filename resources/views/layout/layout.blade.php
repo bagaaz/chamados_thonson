@@ -82,7 +82,7 @@
         </div>
     </main>
     <footer class="footer">
-        <div class="footer_copy">Gabriel Oliveira</div>
+        <img src="img/logo.png" alt="Logo Thonson Chamados" class="footer_logo">
     </footer>
 
     <script src="{{ asset('js/app.js') }}"></script>

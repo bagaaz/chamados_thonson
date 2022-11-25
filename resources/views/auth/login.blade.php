@@ -37,7 +37,7 @@
                             <form class="card-body p-5 text-center" method="POST" action="{{ route('login') }}">
                                 @csrf
 
-                                <h3 class="mb-5">Entrar</h3>
+                                <img src="img/logo.png" alt="Logo Thonson Chamados" class="mb-5 login_logo">
                                 @isset($menssagem)
                                 <div class="alert alert-danger" role="alert">
                                     {{ $menssagem }}

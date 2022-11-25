@@ -4,7 +4,7 @@
 }
 .sidebar_header {
     align-items: center;
-    border-bottom: 1px solid #2879ca;
+    border-bottom: 1px solid var(--light-grey);
     display: flex;
     justify-content: space-between;
 }
