@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreChamadoRequest;
 use App\Http\Requests\UpdateChamadoRequest;
 use App\Models\Chamado;
+use App\Models\Prioridade;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ChamadoController extends Controller
@@ -16,7 +18,8 @@ class ChamadoController extends Controller
      */
     public function index()
     {
-        $chamados = Chamado::paginate(10);
+        $chamados = Chamado::join('prioridades', 'chamados.prioridade_id', '=', 'prioridades.prioridade_id')->paginate(10);
+        // dd($chamados);
 
         return view('chamado.chamados', ['chamados' => $chamados]);
     }
@@ -28,7 +31,9 @@ class ChamadoController extends Controller
      */
     public function create()
     {
-        return view('chamado.form');
+        $prioridades = Prioridade::get()->toArray();
+
+        return view('chamado.form', ['prioridades' => $prioridades]);
     }
 
     /**
@@ -53,7 +58,7 @@ class ChamadoController extends Controller
             'usuario_id' => $userId
         ]);
 
-        return redirect()->route('user.list');
+        return redirect()->route('chamado.index');
     }
 
     /**
@@ -62,9 +67,10 @@ class ChamadoController extends Controller
      * @param  \App\Models\Chamado  $chamado
      * @return \Illuminate\Http\Response
      */
-    public function show(Chamado $chamado)
+    public function show(int $chamadoId)
     {
-        $chamado = Chamado::find($chamado);
+        $chamado = Chamado::find($chamadoId);
+        dd($chamado);
 
         return view('chamado.show', ['chamado' => $chamado]);
     }
@@ -77,6 +83,7 @@ class ChamadoController extends Controller
      */
     public function edit(Chamado $chamado)
     {
+        dd($chamado);
         $chamado = Chamado::find($chamado);
 
         return view('chamado.edit', ['chamado' => $chamado]);

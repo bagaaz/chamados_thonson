@@ -18,4 +18,8 @@ class Chamado extends Model
     public function usuario() {
         return $this->belongsTo(Usuario::class, 'usuario_id');
     }
+
+    public function prioridade() {
+        return $this->belongsTo(Prioridade::class, 'prioridade_id', 'prioridade_id');
+    }
 }

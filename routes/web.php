@@ -50,7 +50,7 @@ Route::prefix('chamado')->group(function () {
     Route::get('/', [ChamadoController::class, 'index'])->name('chamado.index');
     Route::get('/create', [ChamadoController::class, 'create'])->name('chamado.create');
     Route::post('/store', [ChamadoController::class, 'store'])->name('chamado.store');
-    Route::get('/show', [ChamadoController::class, 'show'])->where('id', '[0-9]+')->name('chamado.show');
+    Route::get('/show/{id}', [ChamadoController::class, 'show'])->where('id', '[0-9]+')->name('chamado.show');
     Route::get('/edit', [ChamadoController::class, 'edit'])->where('id', '[0-9]+')->name('chamado.edit');
     Route::post('/update', [ChamadoController::class, 'update'])->where('id', '[0-9]+')->name('chamado.update');
     Route::get('/destroy', [ChamadoController::class, 'destroy'])->where('id', '[0-9]+')->name('chamado.destroy');

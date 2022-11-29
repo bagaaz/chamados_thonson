@@ -44,9 +44,9 @@
                         <label class="input-group-text" for="prioridade">Prioridade</label>
                         <select class="form-select" name="prioridade" id="prioridade">
                             <option value="" {{ old('prioridade') == '' ? 'selected' : '' }}>Selecione uma opção...</option>
-                            <option value="1" {{ old('prioridade') == '1' ? 'selected' : '' }}>Baixo</option>
-                            <option value="2" {{ old('prioridade') == '2' ? 'selected' : '' }}>Médio</option>
-                            <option value="3" {{ old('prioridade') == '3' ? 'selected' : '' }}>Alto</option>
+                            @foreach ($prioridades as $prioridade)
+                            <option value="{{$prioridade['prioridade_id']}}" {{ old('prioridade') == $prioridade['prioridade_id'] ? 'selected' : '' }}>{{ucfirst($prioridade['prioridade'])}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
