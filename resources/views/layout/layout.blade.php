@@ -66,7 +66,7 @@
                 <i class="fa-solid fa-ticket sidebar_submenu__icone"></i>
                 <h4 class="sidebar_submenu__titulo">Chamados</h4>
             </a>
-            <a href="{{ route('chamado.index') }}" class="sidebar_menus__submenu">
+            <a href="#" class="sidebar_menus__submenu">
                 <i class="fa-solid fa-headset sidebar_submenu__icone"></i>
                 <h4 class="sidebar_submenu__titulo">Suporte</h4>
             </a>

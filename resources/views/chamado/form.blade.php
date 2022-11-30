@@ -15,7 +15,7 @@
 
                 <div class="input-group col-12">
                     <span class="input-group-text">Descrição</span>
-                    <textarea class="form-control" aria-label="Descrição" name="descricao" id="descricao" required>{{ old('descricao') }}</textarea>
+                    <textarea class="form-control" aria-label="Descrição" name="descricao" id="descricao" maxlength="250" required>{{ old('descricao') }}</textarea>
                 </div>
 
                 <div class="col-md-4">
