@@ -54,7 +54,7 @@
     </header>
     <nav class="sidebar">
         <div class="sidebar_header">
-            <img class="sidebar_logo" src="img/logo_branca.png" alt="Logo sistema de chamados">
+            <img class="sidebar_logo" src={{asset('img/logo_branca.png')}} alt="Logo sistema de chamados">
             <i id="hamburguer-menu" class="fa-sharp fa-solid fa-bars" onclick="hiddeSidebar()"></i>
         </div>
         <div class="sidebar_menus" id="sidebar_menus">
@@ -82,7 +82,7 @@
         </div>
     </main>
     <footer class="footer">
-        <img src="img/logo.png" alt="Logo Thonson Chamados" class="footer_logo">
+        <img src={{asset('img/logo.png')}} alt="Logo Thonson Chamados" class="footer_logo">
     </footer>
 
     <script src="{{ asset('js/app.js') }}"></script>

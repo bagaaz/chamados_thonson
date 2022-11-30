@@ -6,7 +6,6 @@ use App\Http\Requests\StoreChamadoRequest;
 use App\Http\Requests\UpdateChamadoRequest;
 use App\Models\Chamado;
 use App\Models\Prioridade;
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ChamadoController extends Controller
@@ -69,8 +68,7 @@ class ChamadoController extends Controller
      */
     public function show(int $chamadoId)
     {
-        $chamado = Chamado::find($chamadoId);
-        dd($chamado);
+        $chamado = Chamado::join('prioridades', 'chamados.prioridade_id', '=', 'prioridades.prioridade_id')->find($chamadoId);
 
         return view('chamado.show', ['chamado' => $chamado]);
     }
