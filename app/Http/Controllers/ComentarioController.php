@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMenssagemRequest;
-use App\Http\Requests\UpdateMenssagemRequest;
-use App\Models\Menssagem;
+use App\Http\Requests\StoreComentarioRequest;
+use App\Http\Requests\UpdateComentarioRequest;
+use App\Models\Comentario;
 
-class MenssagemController extends Controller
+class ComentarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class MenssagemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMenssagemRequest  $request
+     * @param  \App\Http\Requests\StoreComentarioRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMenssagemRequest $request)
+    public function store(StoreComentarioRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class MenssagemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Menssagem  $menssagem
+     * @param  \App\Models\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function show(Menssagem $menssagem)
+    public function show(Comentario $comentario)
     {
         //
     }
@@ -53,10 +53,10 @@ class MenssagemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Menssagem  $menssagem
+     * @param  \App\Models\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Menssagem $menssagem)
+    public function edit(Comentario $comentario)
     {
         //
     }
@@ -64,11 +64,11 @@ class MenssagemController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMenssagemRequest  $request
-     * @param  \App\Models\Menssagem  $menssagem
+     * @param  \App\Http\Requests\UpdateComentarioRequest  $request
+     * @param  \App\Models\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMenssagemRequest $request, Menssagem $menssagem)
+    public function update(UpdateComentarioRequest $request, Comentario $comentario)
     {
         //
     }
@@ -76,10 +76,10 @@ class MenssagemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Menssagem  $menssagem
+     * @param  \App\Models\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menssagem $menssagem)
+    public function destroy(Comentario $comentario)
     {
         //
     }

@@ -28,21 +28,21 @@
                 </div>
                 <div class="chamado__info">
                     <div class="row">
-                        <div class="col-8">Criado por: <span class="fw-bold">{{$chamado['usuario']}}</span></div>
-                        <div class="col-4 text-end">Criado em: <span class="fw-bold">{{$chamado['data_criacao']}}</span></div>
+                        <div class="col-8">Criado por: <span class="chamado__info_data">{{$chamado['usuario']}}</span></div>
+                        <div class="col-4 text-end">Criado em: <span class="chamado__info_data">{{$chamado['data_criacao']}}</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-12">Título: <span class="fw-bold">{{$chamado['titulo']}}</span></div>
+                        <div class="col-12">Título: <span class="chamado__info_data">{{$chamado['titulo']}}</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-6">Mnemônico Shift: <span class="fw-bold">{{$chamado['mnemonico_shift']}}</span></div>
-                        <div class="col-6 text-end">Mnemônico Apoio: <span class="fw-bold">{{$chamado['mnemonico_apoio']}}</span></div>
+                        <div class="col-6">Mnemônico Shift: <span class="chamado__info_data">{{$chamado['mnemonico_shift']}}</span></div>
+                        <div class="col-6 text-end">Mnemônico Apoio: <span class="chamado__info_data">{{$chamado['mnemonico_apoio']}}</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-12">O.S.: <span class="fw-bold">{{$chamado['os']}}</span></div>
+                        <div class="col-12">O.S.: <span class="chamado__info_data">{{$chamado['os']}}</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-12">Descrição: <span class="fw-bold">{{$chamado['descricao']}}</span></div>
+                        <div class="col-12">Descrição: <span class="chamado__info_data">{{$chamado['descricao']}}</span></div>
                     </div>
                 </div>
                 <div class="chamado__imgs">
@@ -64,55 +64,36 @@
                     </div>
                 </div>
                 <div class="chamado__comentarios">
-                    <div class="chamado__comentarios_header">
-                        <span class="chamado__comentarios_header_title">Comentários</span><span class="comentarios__count">1</span>
+                    <div class="chamado__comentarios_header row">
+                        <div class="col 6">
+                            <span class="chamado__comentarios_header_title">Comentários</span><span class="comentarios__count">{{count($chamado['comentarios'])}}</span>
+                        </div>
+                        <div class="col-6 text-end">
+                            <a href="#" class="chamado__comentarios_header_add">
+                                <i class="fa-solid fa-plus"></i>
+                                Adicionar Comentário
+                            </a>
+                        </div>
                     </div>
                     <div class="chamado__comentarios_content">
 
-                        <div class="chamado__comentarios_content_item">
-                            <div class="chamado__comentarios_content_item_header row">
-                                <span class="chamado__comentarios_content_item_header_user_name col-12 fw-bold">Gabriel Oliveira em 18/07/2022</span>
-                            </div>
-                            <div class="chamado__comentarios_content_item_body row">
-                                <span class="chamado__comentarios_content_item_body_text col-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</span>
-                            </div>
-                        </div>
+                        @foreach ($chamado['comentarios'] as $comentario)
 
                         <div class="chamado__comentarios_content_item">
                             <div class="chamado__comentarios_content_item_header row">
-                                <span class="chamado__comentarios_content_item_header_user_name col-12 fw-bold">Gabriel Oliveira em 18/07/2022</span>
+                                <span class="chamado__comentarios_content_item_header_user_name col-10">{{$comentario['usuario']}} em {{$comentario['data_criacao']}}</span>
+                                <div class="col-2 text-end">
+                                    <a class="list-group-item-remove" href="{{ route('comentario.destroy', ['id' => $comentario['id']]) }}">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
                             </div>
                             <div class="chamado__comentarios_content_item_body row">
-                                <span class="chamado__comentarios_content_item_body_text col-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</span>
+                                <span class="chamado__comentarios_content_item_body_text col-12">{{$comentario['comentario']}}</span>
                             </div>
                         </div>
 
-                        <div class="chamado__comentarios_content_item">
-                            <div class="chamado__comentarios_content_item_header row">
-                                <span class="chamado__comentarios_content_item_header_user_name col-12 fw-bold">Gabriel Oliveira em 18/07/2022</span>
-                            </div>
-                            <div class="chamado__comentarios_content_item_body row">
-                                <span class="chamado__comentarios_content_item_body_text col-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</span>
-                            </div>
-                        </div>
-
-                        <div class="chamado__comentarios_content_item">
-                            <div class="chamado__comentarios_content_item_header row">
-                                <span class="chamado__comentarios_content_item_header_user_name col-12 fw-bold">Gabriel Oliveira em 18/07/2022</span>
-                            </div>
-                            <div class="chamado__comentarios_content_item_body row">
-                                <span class="chamado__comentarios_content_item_body_text col-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</span>
-                            </div>
-                        </div>
-
-                        <div class="chamado__comentarios_content_item">
-                            <div class="chamado__comentarios_content_item_header row">
-                                <span class="chamado__comentarios_content_item_header_user_name col-12 fw-bold">Gabriel Oliveira em 18/07/2022</span>
-                            </div>
-                            <div class="chamado__comentarios_content_item_body row">
-                                <span class="chamado__comentarios_content_item_body_text col-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

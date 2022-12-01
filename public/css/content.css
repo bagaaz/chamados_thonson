@@ -107,6 +107,13 @@
     margin: 10px;
     padding: 5px;
     border-radius: 5px;
+    color: var(--light-grey);
+}
+.chamado__info > .row {
+    margin-bottom: 1.2rem;
+}
+.chamado__info_data {
+    color: #000;
 }
 .chamado__header_priority > span {
     background-color: var(--white);
@@ -141,6 +148,17 @@
     border-radius: 20px;
     margin-left: 15px;
 }
+.chamado__comentarios_header_add {
+    text-decoration: none;
+    background-color: var(--light-blue);
+    padding: 5px 10px;
+    color: var(--white);
+    border-radius: 5px;
+}
+.chamado__comentarios_header_add:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
 
 .chamado__comentarios_content {
     display: flex;
@@ -153,4 +171,7 @@
     border-radius: 5px;
     margin-bottom: 10px;
     width: 98%;
+}
+.chamado__comentarios_content_item_header_user_name {
+    color: var(--light-grey);
 }

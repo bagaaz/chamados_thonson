@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class ChamadosRepository extends BaseRepository
 {
-    public function getChamadoDados()
+    public function getChamadoDados($chamadoId)
     {
         $query = "
             SELECT
@@ -33,11 +33,41 @@ class ChamadosRepository extends BaseRepository
             ON
                 chamados.usuario_id = users.id
             WHERE
-                chamados.id = 1
+                chamados.id = {$chamadoId}
 
         ";
 
+        $queryComentarios = "
+            SELECT
+                comentarios.id,
+                comentarios.comentario,
+                comentarios.chamados_id,
+                comentarios.usuarios_id,
+                users.name as usuario,
+                comentarios.created_at
+            FROM
+                comentarios
+            JOIN
+                users
+            ON
+                comentarios.usuarios_id = users.id
+            WHERE
+                comentarios.chamados_id = {$chamadoId}";
+
         $consulta = DB::select($query);
+        $consultaComentarios = DB::select($queryComentarios);
+
+        $dadosComentarios = collect($consultaComentarios)->map(function ($comentario) {
+
+            return [
+                'id' => $comentario->id,
+                'comentario' => $comentario->comentario,
+                'chamado_id' => $comentario->chamados_id,
+                'usuario_id' => $comentario->usuarios_id,
+                'usuario' => $comentario->usuario,
+                'data_criacao' => $this->converteData($comentario->created_at),
+            ];
+        })->toArray();
 
         $dados = collect($consulta)->map(function ($chamado) {
 
@@ -53,9 +83,11 @@ class ChamadosRepository extends BaseRepository
                 'imagens' => $chamado->imagens,
                 'usuario_id' => $chamado->usuario_id,
                 'usuario' => $chamado->usuario,
-                'data_criacao' => $this->converteData($chamado->created_at)
+                'data_criacao' => $this->converteData($chamado->created_at),
             ];
         })->toArray();
+
+        $dados[0]['comentarios'] = $dadosComentarios;
 
         return $dados[0];
     }

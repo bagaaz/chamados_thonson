@@ -70,7 +70,7 @@ class ChamadoController extends Controller
     public function show(int $chamadoId)
     {
         $chamado = new ChamadosRepository();
-        $chamado = $chamado->getChamadoDados();
+        $chamado = $chamado->getChamadoDados($chamadoId);
 
         return view('chamado.show', ['chamado' => $chamado]);
     }

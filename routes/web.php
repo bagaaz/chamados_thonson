@@ -6,7 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ChamadoController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MenssagemController;
+use App\Http\Controllers\ComentarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,13 +56,13 @@ Route::prefix('chamado')->group(function () {
     Route::get('/destroy', [ChamadoController::class, 'destroy'])->where('id', '[0-9]+')->name('chamado.destroy');
 });
 
-Route::prefix('menssagem')->group(function () {
-    Route::get('/', [MenssagemController::class, 'index'])->name('menssagem.index');
-    Route::get('/create', [MenssagemController::class, 'create'])->name('menssagem.create');
-    Route::post('/store', [MenssagemController::class, 'store'])->name('menssagem.store');
-    Route::get('/show', [MenssagemController::class, 'show'])->where('id', '[0-9]+')->name('menssagem.show');
-    Route::get('/edit', [MenssagemController::class, 'edit'])->where('id', '[0-9]+')->name('menssagem.edit');
-    Route::post('/update', [MenssagemController::class, 'update'])->where('id', '[0-9]+')->name('menssagem.update');
-    Route::get('/destroy', [MenssagemController::class, 'destroy'])->where('id', '[0-9]+')->name('menssagem.destroy');
+Route::prefix('comentario')->group(function () {
+    Route::get('/', [ComentarioController::class, 'index'])->name('comentario.index');
+    Route::get('/create', [ComentarioController::class, 'create'])->name('comentario.create');
+    Route::post('/store', [ComentarioController::class, 'store'])->name('comentario.store');
+    Route::get('/show', [ComentarioController::class, 'show'])->where('id', '[0-9]+')->name('comentario.show');
+    Route::get('/edit', [ComentarioController::class, 'edit'])->where('id', '[0-9]+')->name('comentario.edit');
+    Route::post('/update', [ComentarioController::class, 'update'])->where('id', '[0-9]+')->name('comentario.update');
+    Route::get('/destroy', [ComentarioController::class, 'destroy'])->where('id', '[0-9]+')->name('comentario.destroy');
 });
 
