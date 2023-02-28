@@ -1,0 +1,26 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "axios": "^1.1.2",
+        "laravel-vite-plugin": "^0.7.2",
+        "lodash": "^4.17.19",
+        "postcss": "^8.4.21",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.58.2",
+        "sass-loader": "^12.6.0",
+        "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.3.0",
+        "autoprefixer": "^10.4.13",
+        "jquery": "^3.6.3",
+        "laravel-mix": "^6.0.49",
+        "perfect-scrollbar": "^1.5.5",
+        "requirejs": "^2.3.6",
+        "summernote": "^0.8.20"
+    }
+}
