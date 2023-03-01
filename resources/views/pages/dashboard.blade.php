@@ -5,7 +5,7 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
+                <div class="card h-100">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
@@ -17,7 +17,7 @@
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                                <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
                                     <i class="fa-regular fa-pen-to-square text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
+                <div class="card h-100">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
+                <div class="card h-100">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
+                                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
                                     <i class="fa-solid fa-exclamation text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6">
-                <div class="card">
+                <div class="card h-100">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">

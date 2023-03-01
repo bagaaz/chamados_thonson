@@ -40,14 +40,16 @@
                     <span class="nav-link-text ms-1">Chamados</span>
                 </a>
             </li>
+            @if (Auth::user()->role_id == 3)
+
             <li class="nav-item mt-3 d-flex align-items-center">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Admin</h6>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'users') == true ? 'active' : '' }}"
-                    href="{{ route('users') }}">
+                href="{{ route('users') }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-users text-dark text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Gerenciamento de Usuarios</span>
@@ -58,24 +60,25 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'priorities') == true ? 'active' : '' }}"
-                    href="{{ route('priorities') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-angles-up text-dark text-sm opacity-10"></i>
+                href="{{ route('priorities') }}">
+                <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-angles-up text-dark text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Prioridades de Chamados</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'status') == true ? 'active' : '' }}"
-                    href="{{ route('status') }}">
+                href="{{ route('status') }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-temperature-half text-dark text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Status de Chamados</span>
                 </a>
             </li>
+            @endif
         </ul>
     </div>
 </aside>
