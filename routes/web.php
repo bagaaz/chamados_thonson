@@ -8,6 +8,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\PrioritieController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckAdminRole;
 
 Route::get('/', function () {
     return redirect('/dashboard');
@@ -24,16 +25,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
     Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
 
-    /*       Users        */
-    Route::resource('users', UserController::class, [
-        'names' => [
-            'index' => 'users'
-        ],
-        'except' => ['show', 'update']
-    ]);
-    Route::post('users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::get('users/{user}/delete', [UserController::class, 'destroy'])->name('users.destroy');
-
     /*       Calls        */
     Route::resource('calls', CallController::class, [
         'names' => [
@@ -44,26 +35,42 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('calls/{call}', [CallController::class, 'update'])->name('calls.update');
     Route::get('calls/{call}/delete', [CallController::class, 'destroy'])->name('calls.destroy');
 
-    /*       Priorities        */
-    Route::resource('priorities', PrioritieController::class, [
-        'names' => [
-            'index' => 'priorities'
-        ],
-        'except' => ['show', 'update']
-    ]);
-    Route::post('priorities/{priority}', [PrioritieController::class, 'update'])->name('priorities.update');
-    Route::get('priorities/{priority}/delete', [PrioritieController::class, 'destroy'])->name('priorities.destroy');
-
-    /*       Status        */
-    Route::resource('status', StatusController::class, [
-        'names' => [
-            'index' => 'status'
-        ],
-        'except' => ['show', 'update']
-    ]);
-    Route::post('status/{status}', [StatusController::class, 'update'])->name('status.update');
-    Route::get('status/{status}/delete', [StatusController::class, 'destroy'])->name('status.destroy');
-
     /*       Logout        */
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+
+    /*       Admin        */
+    Route::group(['middleware' => 'admin'], function () {
+
+        /*       Crud Users        */
+        Route::resource('users', UserController::class, [
+            'names' => [
+                'index' => 'users'
+            ],
+            'except' => ['show', 'update']
+        ]);
+        Route::post('users/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::get('users/{user}/delete', [UserController::class, 'destroy'])->name('users.destroy');
+
+        /*       Priorities        */
+        Route::resource('priorities', PrioritieController::class, [
+            'names' => [
+                'index' => 'priorities'
+            ],
+            'except' => ['show', 'update']
+        ]);
+        Route::post('priorities/{priority}', [PrioritieController::class, 'update'])->name('priorities.update');
+        Route::get('priorities/{priority}/delete', [PrioritieController::class, 'destroy'])->name('priorities.destroy');
+
+        /*       Status        */
+        Route::resource('status', StatusController::class, [
+            'names' => [
+                'index' => 'status'
+            ],
+            'except' => ['show', 'update']
+        ]);
+        Route::post('status/{status}', [StatusController::class, 'update'])->name('status.update');
+        Route::get('status/{status}/delete', [StatusController::class, 'destroy'])->name('status.destroy');
+
+    });
 });

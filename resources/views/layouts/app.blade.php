@@ -58,6 +58,7 @@
 
     <!-- JQuery -->
     <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- SummerNote -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js"></script>
     <!--   Core JS Files   -->
@@ -85,6 +86,10 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('assets/js/argon-dashboard.js') }}"></script>
     @stack('js');
+
+    @if (session()->has('permission'))
+        @include('components.permission', ['message' => session()->get('permission')])
+    @endif
 </body>
 
 </html>
