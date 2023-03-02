@@ -93,11 +93,7 @@
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Sales overview</h6>
-                        <p class="text-sm mb-0">
-                            <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">4% more</span> in 2021
-                        </p>
+                        <h6 class="text-capitalize">Chamados abertos últimos nove dias</h6>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -386,23 +382,23 @@
 
         var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
 
-        gradientStroke1.addColorStop(1, 'rgba(251, 99, 64, 0.2)');
-        gradientStroke1.addColorStop(0.2, 'rgba(251, 99, 64, 0.0)');
-        gradientStroke1.addColorStop(0, 'rgba(251, 99, 64, 0)');
+        gradientStroke1.addColorStop(1, 'rgba(64, 161, 251, 0.2)');
+        gradientStroke1.addColorStop(0.2, 'rgba(64, 161, 251, 0.0)');
+        gradientStroke1.addColorStop(0, 'rgba(64, 161, 251, 0)');
         new Chart(ctx1, {
             type: "line",
             data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                labels: <?php echo json_encode($callsLastNineDays['labels']); ?>,
                 datasets: [{
                     label: "Mobile apps",
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 0,
-                    borderColor: "#fb6340",
+                    borderColor: "#40A1FB",
                     backgroundColor: gradientStroke1,
                     borderWidth: 3,
                     fill: true,
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                    data: <?php echo json_encode($callsLastNineDays['results']); ?>,
                     maxBarThickness: 6
 
                 }],

@@ -677,6 +677,8 @@ window.darkMode = function (el) {
     for (var i = 0; i < card_border.length; i++) {
       card_border[i].classList.add("border-dark");
     }
+    var sidebarLogo = document.querySelector("#sidebar_logo");
+    sidebarLogo.src = 'https://chamados.devconecta.com.br/img/logos/logo_branca.png';
     el.setAttribute("checked", "true");
   } else {
     body.classList.remove("dark-version");
@@ -759,6 +761,8 @@ window.darkMode = function (el) {
     for (var i = 0; i < card_border_dark.length; i++) {
       card_border_dark[i].classList.remove("border-dark");
     }
+    var _sidebarLogo = document.querySelector("#sidebar_logo");
+    _sidebarLogo.src = 'https://chamados.devconecta.com.br/img/logos/logo.png';
     el.removeAttribute("checked");
   }
 };

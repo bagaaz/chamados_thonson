@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -44,13 +46,12 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         try {
-            $request->merge(['password' => bcrypt('123456')]);
-            $user = User::create([
+            DB::table('users')->insert([
                 'username' => $request->username,
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => bcrypt('123456'),
                 'role_id' => (int) $request->role_id,
             ]);
 

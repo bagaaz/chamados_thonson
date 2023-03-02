@@ -21,13 +21,22 @@
                     </div>
                 </div>
                 <div class="col-auto ms-auto d-flex align-items-center">
-                    <a href="#" class="btn btn-sm btn-danger mb-0">Alterar senha</a>
+                    <button class="btn btn-sm btn-danger mb-0" data-bs-toggle="modal" data-bs-target="#change-password-modal">Alterar senha</button>
                 </div>
             </div>
         </div>
     </div>
     <div id="alert">
         @include('components.alert')
+        @if ($errors->any())
+            <div class="alert alert-danger mx-3">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="text-light">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
     <div class="container-fluid py-4">
         <div class="row">
@@ -46,7 +55,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Nome</label>
+                                        <label for="example-text-input" class="form-control-label">Apelido</label>
                                         <input class="form-control" type="text" name="username" value="{{ old('username', auth()->user()->username) }}">
                                     </div>
                                 </div>
@@ -75,5 +84,47 @@
             </div>
         </div>
         @include('layouts.footers.auth.footer')
+
+        <!-- Modal -->
+        <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="change-password-modal-label" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="change-password-modal-label">Alterar senha</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                    <form action="{{ route('profile.update.password') }}" method="POST">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="current-password" class="form-label">Senha atual</label>
+                                <input type="password" name="current_password" id="current-password" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="new-password" class="form-label">Nova senha</label>
+                                <input type="password" name="new_password" id="new-password" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="new-password-confirm" class="form-label">Confirmar nova senha</label>
+                                <input type="password" name="new_password_confirmation" id="new-password-confirm" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary">Salvar alterações</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        @push('js')
+            <script>
+                $(document).ready(function() {
+                    $('.selectpicker').selectpicker();
+                });
+            </script>
+        @endpush
     </div>
 @endsection

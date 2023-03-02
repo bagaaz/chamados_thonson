@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     /*       Profile        */
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
     Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/password', [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
 
     /*       Calls        */
     Route::resource('calls', CallController::class, [
