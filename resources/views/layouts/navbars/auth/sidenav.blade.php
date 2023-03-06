@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main" style="height: auto;">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}"
+                <a class="nav-link text-wrap {{ Route::currentRouteName() == 'home' ? 'active' : '' }}"
                     href="{{ route('home') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}"
+                <a class="nav-link text-wrap {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}"
                     href="{{ route('profile') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -31,7 +31,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'calls') == true ? 'active' : '' }}"
+                <a class="nav-link text-wrap {{ str_contains(request()->url(), 'calls') == true ? 'active' : '' }}"
                     href="{{ route('calls') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -46,7 +46,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Admin</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'users') == true ? 'active' : '' }}"
+                <a class="nav-link text-wrap {{ str_contains(request()->url(), 'users') == true ? 'active' : '' }}"
                 href="{{ route('users') }}">
                     <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -59,7 +59,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Configuração do Sistema</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'priorities') == true ? 'active' : '' }}"
+                <a class="nav-link text-wrap {{ str_contains(request()->url(), 'priorities') == true ? 'active' : '' }}"
                 href="{{ route('priorities') }}">
                 <div
                 class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -69,7 +69,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'status') == true ? 'active' : '' }}"
+                <a class="nav-link text-wrap {{ str_contains(request()->url(), 'status') == true ? 'active' : '' }}"
                 href="{{ route('status') }}">
                     <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

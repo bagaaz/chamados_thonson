@@ -98,6 +98,7 @@
                 </div>
             </div>
         </div>
+        @include('layouts.footers.auth.footer')
     </div>
     <script>
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');

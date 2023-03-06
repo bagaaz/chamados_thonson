@@ -103,6 +103,7 @@
                 </div>
             </div>
         </div>
+        @include('layouts.footers.auth.footer')
     </div>
 
     <div class="modal fade" id="modalSelectOne" tabindex="-1" role="dialog" aria-labelledby="modalSelectOneLabel"

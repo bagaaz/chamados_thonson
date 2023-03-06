@@ -6,7 +6,8 @@ use App\Http\Requests\StoreCallRequest;
 use App\Http\Requests\UpdateCallRequest;
 use App\Models\Call;
 use App\Models\Priority;
-use App\Support\Helpers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CallController extends Controller
 {
@@ -24,17 +25,20 @@ class CallController extends Controller
      */
     public function index()
     {
-        $calls = collect(Call::with(['priority', 'status'])->get())->map(function ($call) {
-            return [
-                'id' => $call->id,
-                'title' => $call->title,
-                'priority' => $call->priority->name,
-                'status' => $call->status->name,
-                'created_at' => Helpers::formatDate($call->created_at),
-            ];
-        });
+        $calls = Call::with(['priority', 'status'])->select('*', DB::raw('DATE_FORMAT(created_at, "%d/%m/%Y") as created_date'))->paginate(10);
 
         return view("pages.calls.calls-list", compact('calls'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Call  $call
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Call $call)
+    {
+        return view("pages.calls.calls-show", compact('call'));
     }
 
     /**
@@ -132,5 +136,17 @@ class CallController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Erro ao excluir chamado - ' . $e->getMessage());
         }
+    }
+
+    public function ajax(Request $request)
+    {
+        $query = $request->get('q');
+
+        //Execute a pesquisa no banco de dados e retorne uma resposta JSON com os resultados
+        $results = Call::where('title', 'LIKE', '%' . $query . '%')
+                        ->orWhere('id', $query)
+                        ->get();
+
+        return response()->json($results);
     }
 }

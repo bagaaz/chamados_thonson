@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
     Route::post('calls/{call}', [CallController::class, 'update'])->name('calls.update');
     Route::get('calls/{call}/delete', [CallController::class, 'destroy'])->name('calls.destroy');
+    Route::get('calls/ajax/', [CallController::class, 'ajax'])->name('calls.ajax');
 
     /*       Logout        */
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
