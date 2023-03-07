@@ -110,4 +110,14 @@
         </div>
         @include('layouts.footers.auth.footer')
     </div>
+
+    @push('js')
+    <script>
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                height: 300,
+            });
+        });
+    </script>
+    @endpush
 @endsection

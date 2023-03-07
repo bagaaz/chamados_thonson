@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
         'names' => [
             'index' => 'calls'
         ],
-        'except' => ['show', 'update']
+        'except' => ['update']
     ]);
     Route::post('calls/{call}', [CallController::class, 'update'])->name('calls.update');
     Route::get('calls/{call}/delete', [CallController::class, 'destroy'])->name('calls.destroy');

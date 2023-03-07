@@ -6,16 +6,20 @@ use App\Http\Requests\StoreCallRequest;
 use App\Http\Requests\UpdateCallRequest;
 use App\Models\Call;
 use App\Models\Priority;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CallController extends Controller
 {
     public $priorities;
+    public $status;
+    public $callers;
 
     public function __construct()
     {
         $this->priorities = Priority::select('id', 'name')->get()->toArray();
+        $this->status = Status::select('id', 'name')->get()->toArray();
     }
 
     /**
@@ -38,7 +42,10 @@ class CallController extends Controller
      */
     public function show(Call $call)
     {
-        return view("pages.calls.calls-show", compact('call'));
+        $priorities = $this->priorities;
+
+        $call->load(['priority', 'status', 'caller']);
+        return view("pages.calls.calls-show", compact('call', 'priorities'));
     }
 
     /**
@@ -102,8 +109,9 @@ class CallController extends Controller
      */
     public function update(UpdateCallRequest $request, Call $call)
     {
+
         try {
-            $call->update([
+            $data = [
                 'title' => $request->title,
                 'description' => $request->description,
                 'service_order' => $request->service_order,
@@ -113,7 +121,16 @@ class CallController extends Controller
                 'caller_id' => (int) $request->caller_id,
                 'status_id' => 1,
                 'image' => $request->image,
-            ]);
+            ];
+
+            if ($request->title == null) {
+                $data = [
+                    'priority_id' => (int) $request->priority_id,
+                    'status_id' => (int) $request->status_id
+                ];
+            }
+
+            $call->update($data);
 
             return redirect('/calls')->with('success', 'Chamado atualizado com sucesso!');
         } catch (\Exception $e) {

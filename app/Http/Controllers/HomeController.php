@@ -13,9 +13,10 @@ class HomeController extends Controller
     public function index()
     {
         $openedCalls = Call::where('status_id', 1)->count();
-        $concludedCalls = Call::where('status_id', 5)->count();
         $waitingCalls = Call::where('status_id', 2)->count();
+        $inProgressCalls = Call::where('status_id', 3)->count();
         $cancelledCalls = Call::where('status_id', 4)->count();
+        $concludedCalls = Call::where('status_id', 5)->count();
 
         $callsLastNineDays = $this->callsInLastNineDays();
 

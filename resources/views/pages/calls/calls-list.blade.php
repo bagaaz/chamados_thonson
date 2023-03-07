@@ -81,7 +81,9 @@
                                     <td>
                                         <div class="d-flex px-3 py-1">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">{{ $call->title }}</h6>
+                                                <a href="{{ route('calls.show', ['call' => $call->id]) }}">
+                                                    <h6 class="mb-0 text-sm link-primary">{{ $call->title }}</h6>
+                                                </a>
                                             </div>
                                         </div>
                                     </td>
