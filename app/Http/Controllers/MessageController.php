@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+use App\Models\Call;
 use App\Models\Message;
 
 class MessageController extends Controller
@@ -13,19 +14,11 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Call $call)
     {
-        //
-    }
+        $messages = Message::where('call_id', $call->id)->paginate(10);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $messages;
     }
 
     /**
@@ -34,9 +27,17 @@ class MessageController extends Controller
      * @param  \App\Http\Requests\StoreMessageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMessageRequest $request)
+    public function store(StoreMessageRequest $request, int $idCall)
     {
-        //
+        $data = [
+            'message' => $request->message,
+            'call_id' => $idCall,
+            'user_id' => auth()->user()->id
+        ];
+
+        Message::create($data);
+
+        return redirect()->route('calls.show', $idCall);
     }
 
     /**

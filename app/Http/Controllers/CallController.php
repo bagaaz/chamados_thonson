@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCallRequest;
 use App\Http\Requests\UpdateCallRequest;
 use App\Models\Call;
+use App\Models\Message;
 use App\Models\Priority;
 use App\Models\Status;
 use Illuminate\Http\Request;
@@ -43,9 +44,10 @@ class CallController extends Controller
     public function show(Call $call)
     {
         $priorities = $this->priorities;
+        $messages = Message::with(['caller'])->where('call_id', $call->id)->paginate(10);
 
         $call->load(['priority', 'status', 'caller']);
-        return view("pages.calls.calls-show", compact('call', 'priorities'));
+        return view("pages.calls.calls-show", compact('call', 'priorities', 'messages'));
     }
 
     /**

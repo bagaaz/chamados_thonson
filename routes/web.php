@@ -4,6 +4,7 @@ use App\Http\Controllers\CallController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\PrioritieController;
 use App\Http\Controllers\StatusController;
@@ -36,6 +37,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('calls/{call}', [CallController::class, 'update'])->name('calls.update');
     Route::get('calls/{call}/delete', [CallController::class, 'destroy'])->name('calls.destroy');
     Route::get('calls/ajax/', [CallController::class, 'ajax'])->name('calls.ajax');
+
+    Route::prefix('calls/{call}')->group(function () {
+        Route::resource('messages', MessageController::class, [
+            'names' => [
+                'index' => 'messages'
+            ],
+            'except' => ['update']
+        ]);
+    });
 
     /*       Logout        */
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');

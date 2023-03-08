@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Chamados'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Chamado'])
 
     <div class="row mt-4 mx-4">
         <div class="card mb-4">
@@ -108,32 +108,7 @@
             </form>
         </div>
     </div>
-    <div class="row mt-4 mx-4" id="message">
-        <div class="card mb-4">
-            <div class="row card-header pb-0">
-                <h3 class="mb-0">Comentários</h3>
-            </div>
-            <div class="card-body">
-                <div class="row px-1">
-                    <div class="col-12">
-                        <p>Menssagem</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row card-footer">
-                <form method="post" action="#">
-                    @csrf
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label for="comentario">Adicionar comentário:</label>
-                            <textarea class="summernote" name="comentario" id="comentario" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Comentar</button>
-                </form>
-            </div>
-        </div>
-    </div>
+    @include('layouts.section.messages', ['messages' => $messages, 'call' => $call])
     @include('layouts.footers.auth.footer')
 
     @push('js')
