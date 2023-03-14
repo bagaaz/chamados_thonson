@@ -67,7 +67,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="priority_id" class="form-control-label">Prioridade</label>
-                            <select class="form-control" name="priority_id" id="priority_id" required>
+                            <select class="form-control" name="priority_id" id="priority_id" required @if (Auth::user()->role_id != 2 || Auth::user()->role_id != 3) disabled @endif>
                                 <option value="" {{ empty($call->priority_id) ? 'selected' : '' }}>Selecione uma
                                     opção...</option>
                                 @foreach ($priorities as $priority)
@@ -86,7 +86,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="status_id">Alterar status:</label>
-                            <select class="form-control" name="status_id" id="status_id">
+                            <select class="form-control" name="status_id" id="status_id" @if (Auth::user()->role_id != 2 || Auth::user()->role_id != 3) disabled @endif>
                                 <option value="1" {{ $call->status->name == 'Aberto' ? 'selected' : '' }}>Aberto</option>
                                 <option value="2" {{ $call->status->name == 'Em espera' ? 'selected' : '' }}>Em espera</option>
                                 <option value="3" {{ $call->status->name == 'Em andamento' ? 'selected' : '' }}>Em andamento</option>
