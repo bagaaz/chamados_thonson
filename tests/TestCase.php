@@ -9,7 +9,7 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    public $user;
+    protected $user;
 
     public function setUp(): void
     {
