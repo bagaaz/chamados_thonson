@@ -28,9 +28,17 @@ class CallController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $calls = Call::with(['priority', 'status'])->select('*', DB::raw('DATE_FORMAT(created_at, "%d/%m/%Y") as created_date'))->paginate(10);
+        if ($request->has('filter'))
+        {
+            $filter = $request->filter;
+            $calls = Call::with(['priority', 'status'])->select('*', DB::raw('DATE_FORMAT(created_at, "%d/%m/%Y") as created_date'))->where('status_id', $filter)->paginate(10);
+        }
+        else
+        {
+            $calls = Call::with(['priority', 'status'])->select('*', DB::raw('DATE_FORMAT(created_at, "%d/%m/%Y") as created_date'))->paginate(10);
+        }
 
         return view("pages.calls.calls-list", compact('calls'));
     }

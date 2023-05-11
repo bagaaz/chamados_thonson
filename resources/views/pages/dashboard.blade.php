@@ -5,88 +5,96 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card h-100">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Chamados em Aberto</p>
-                                    <h5 class="font-weight-bolder">
-                                        {{ $openedCalls }}
-                                    </h5>
+                <a href="{{ route('calls', ['filter' => '1']) }}">
+                    <div class="card h-100">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="numbers">
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Chamados em Aberto</p>
+                                        <h5 class="font-weight-bolder">
+                                            {{ $openedCalls }}
+                                        </h5>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
-                                    <i class="fa-regular fa-pen-to-square text-lg opacity-10" aria-hidden="true"></i>
+                                <div class="col-4 text-end">
+                                    <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
+                                        <i class="fa-regular fa-pen-to-square text-lg opacity-10" aria-hidden="true"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card h-100">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Chamados Concluídos</p>
-                                    <h5 class="font-weight-bolder">
-                                        {{ $concludedCalls }}
-                                    </h5>
+                <a href="{{ route('calls', ['filter' => '5']) }}">
+                    <div class="card h-100">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="numbers">
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Chamados Concluídos</p>
+                                        <h5 class="font-weight-bolder">
+                                            {{ $concludedCalls }}
+                                        </h5>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                    <i class="fa-solid fa-check text-lg opacity-10" aria-hidden="true"></i>
+                                <div class="col-4 text-end">
+                                    <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                                        <i class="fa-solid fa-check text-lg opacity-10" aria-hidden="true"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card h-100">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Chamados em Espera</p>
-                                    <h5 class="font-weight-bolder">
-                                        {{ $waitingCalls }}
-                                    </h5>
+                <a href="{{ route('calls', ['filter' => '2']) }}">
+                    <div class="card h-100">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="numbers">
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Chamados em Espera</p>
+                                        <h5 class="font-weight-bolder">
+                                            {{ $waitingCalls }}
+                                        </h5>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                    <i class="fa-solid fa-exclamation text-lg opacity-10" aria-hidden="true"></i>
+                                <div class="col-4 text-end">
+                                    <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                                        <i class="fa-solid fa-exclamation text-lg opacity-10" aria-hidden="true"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-xl-3 col-sm-6">
-                <div class="card h-100">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Chamados Cancelados</p>
-                                    <h5 class="font-weight-bolder">
-                                        {{ $cancelledCalls }}
-                                    </h5>
+                <a href="{{ route('calls', ['filter' => '4']) }}">
+                    <div class="card h-100">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="numbers">
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Chamados Cancelados</p>
+                                        <h5 class="font-weight-bolder">
+                                            {{ $cancelledCalls }}
+                                        </h5>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                    <i class="fa-solid fa-xmark text-lg opacity-10" aria-hidden="true"></i>
+                                <div class="col-4 text-end">
+                                    <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                                        <i class="fa-solid fa-xmark text-lg opacity-10" aria-hidden="true"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <div class="row mt-4">
